@@ -18,8 +18,6 @@ The objectives of this mini-project are:
 
 * Designed to work in "user mode" (unprivileged), therefore using a port number above 1000 (rather than port 80 that a privileged web server would use)
 
-* ~~Windows 10 note: The new Windows bash on ubuntu looks promising. If you are running Windows 10, please give this a try and let me know if the Ubuntu/bash environment is suitable for CIS 322 development.~~
-
 ### Assignment
 * Fork this repository to create your own repository on Bitbucket. (Read the documentation as needed, and create an account on Bitbucket if you don't have one. You should've already done finished this as part of Project 0.) 
 * Clone your repository onto the machine you want to work on.
@@ -31,7 +29,7 @@ The objectives of this mini-project are:
 * Revise this README.md file: Erase what is no longer relevant and add identifying information. If you have concerns about adding your email ID, let the instructors know.
   
   ```
-  ## Author: John Doe, jdoe@uoregon.edu
+  ## Ruben Oramas, oramas@uoregon.edu
   ```
   
 * Copy the `credentials-skel.ini` file to `credentials.ini`, then edit it to contain correct information including your Bitbucket repository URL. `credentials.ini` should NOT be under version control (exclude it using your `.gitignore` file)
