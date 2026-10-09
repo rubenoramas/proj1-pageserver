@@ -92,7 +92,7 @@ def respond(sock):
     parts = request.split()
     if len(parts) > 1 and parts[0] == "GET":
         path = parts[1][1:]
-        if path.startswith("..") or path.startswith("/") or path.startswith("~"):
+        if path.startswith("..") or path.startswith("/") or path.startswith("~") or "//" in path:
             transmit(STATUS_FORBIDDEN, sock)
         else:
             options = get_options()
