@@ -91,8 +91,12 @@ def respond(sock):
 
     parts = request.split()
     if len(parts) > 1 and parts[0] == "GET":
-        transmit(STATUS_OK, sock)
-        transmit(CAT, sock)
+        path = parts[1][1:]
+        if path.startswith("..") or path.startswith("/") or path.startswith("~"):
+            transmit(STATUS_FORBIDDEN, sock)
+        else:
+            transmit(STATUS_OK, sock)
+            transmit(CAT, sock)
     else:
         log.info("Unhandled request: {}".format(request))
         transmit(STATUS_NOT_IMPLEMENTED, sock)
