@@ -12,7 +12,7 @@
   located in ./pages  (where '.' is the directory from which this
   program is run).
 """
-
+import os
 import config    # Configure from .ini files and command line
 import logging   # Better than print statements
 logging.basicConfig(format='%(levelname)s:%(message)s',
@@ -95,8 +95,13 @@ def respond(sock):
         if path.startswith("..") or path.startswith("/") or path.startswith("~"):
             transmit(STATUS_FORBIDDEN, sock)
         else:
-            transmit(STATUS_OK, sock)
-            transmit(CAT, sock)
+            options = get_options()
+            fullpath = os.path.join(options.DOCROOT, path)
+            if os.path.isfile(fullpath):
+                transmit(STATUS_OK, sock)
+                transmit(CAT, sock)
+            else:
+                transmit(STATUS_NOT_FOUND, sock)
     else:
         log.info("Unhandled request: {}".format(request))
         transmit(STATUS_NOT_IMPLEMENTED, sock)
