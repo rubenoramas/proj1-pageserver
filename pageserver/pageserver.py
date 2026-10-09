@@ -98,8 +98,10 @@ def respond(sock):
             options = get_options()
             fullpath = os.path.join(options.DOCROOT, path)
             if os.path.isfile(fullpath):
+                with open(fullpath, "r") as f:
+                    content = f.read()
                 transmit(STATUS_OK, sock)
-                transmit(CAT, sock)
+                transmit(content, sock)
             else:
                 transmit(STATUS_NOT_FOUND, sock)
     else:
